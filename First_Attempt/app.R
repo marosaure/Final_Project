@@ -34,8 +34,14 @@ ui <- fluidPage(
         # Show a plot of the generated distribution
         
         mainPanel(
+          
            plotOutput("distPlot"),
+           plotOutput("img2"),
            
+           #image
+           renderImage("WhatsApp Image 2023-05-02 at 15.33.28.jpeg"),
+           
+           #text
            helpText("Note: while the data view will show only",
                     "the specified number of observations, the",
                     "summary will be based on the full dataset."),
@@ -53,7 +59,8 @@ ui <- fluidPage(
           ),
           column(3)
         ),
-        fluidRow(style = "height:25px;"
+        fluidRow(style = "height:25px;",
+                 
         )
         
         
@@ -76,6 +83,15 @@ server <- function(input, output) {
              xlab = 'Waiting time to next eruption (in mins)',
              main = 'Histogram of waiting times')
     })
+    
+    output$img2 <- renderImage({
+      # Use the 'img2' file in the www directory
+      filename <- "WhatsApp Image 2023-05-02 at 15.33.28.jpeg"
+      path <- paste(getwd(), "/", filename, sep="")
+      # Return a list containing the filename
+      list(src = path, alt = "WhatsApp Image 2023-05-02 at 15.33.28.jpeg")
+    }, deleteFile = FALSE)
+
 }
 
 # Run the application 

@@ -1,11 +1,3 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 
@@ -13,7 +5,21 @@ library(shiny)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Our nice fridge"),
+    
+    #navigation bar
+    navbarPage(
+      "Welcome to fridge!",
+      id = "main_navbar",
+      
+      #Tabs
+      tabPanel("MyFridge"),
+      tabPanel("Give Me a Recipe!"),
+      tabPanel("Usefull Maps")
+      
+      #Fin
+      ),
+    
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -26,11 +32,36 @@ ui <- fluidPage(
         ),
 
         # Show a plot of the generated distribution
+        
         mainPanel(
-           plotOutput("distPlot")
+           plotOutput("distPlot"),
+           
+           helpText("Note: while the data view will show only",
+                    "the specified number of observations, the",
+                    "summary will be based on the full dataset."),
+        
+        #HTML TEXT? 
+        fluidRow(
+          style = "height:50px;",
+          column(3),
+          column(6,
+                 shiny::HTML("<br><br><center> <h1>What you'll find here</h1> </center><br>"),
+                 shiny::HTML("<h5>An interactive tool to help you explore the actual paths employees 
+                                                   have taken during their County careers. With information about the 
+                                                   popularity of certain paths, salary differences, and more, you can 
+                                                   build your own path based on what is meaningful to you.</h5>")
+          ),
+          column(3)
+        ),
+        fluidRow(style = "height:25px;"
+        )
+        
+        
         )
     )
 )
+
+
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {

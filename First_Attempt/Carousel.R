@@ -25,7 +25,7 @@ ui <- fluidPage(
       class = "carousel-inner",
       tags$div(
         class = "item active",
-        tags$img(src = "try_cat.png", alt = "1"),
+        tags$img(src = "fridge_image .jpeg", alt = "1"),
         tags$div(
           class = "container",
           tags$div(
@@ -48,7 +48,7 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "WhatsApp Image 2023-05-02 at 15.33.28.jpeg", alt = "2"),
+        tags$img(src = "fruits .jpeg", alt = "2"),
         tags$div(
           class = "container",
           tags$div(
@@ -69,7 +69,7 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "try cat.png", alt = "3"),
+        tags$img(src = "legumes .jpeg", alt = "3"),
         tags$div(
           class = "container",
           tags$div(

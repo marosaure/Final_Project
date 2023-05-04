@@ -9,7 +9,7 @@ ui <- fluidPage(
   titlePanel("Our nice fridge"),
   
   #navigation bar
-  navbarPage( title = img(src="www/fridge_logo.jpg", height = "30px"),
+  navbarPage( title = img(src="www/fridge_logo.png", height = "30px"),
               windowTitle = "Welcome to fridge!",
               id = "main_navbar",
               position = "fixed-top",
@@ -70,7 +70,7 @@ library(shiny)
 library(blastula)
 library(glue)
 # Define on Logo 
-img_path_2 <- "www/fridge_logo.jpg"
+img_path_2 <- "www/fridge_logo.png"
 ds_logo <- add_image(img_path_2, width = 200)
 header_text <- md(glue(ds_logo))
 

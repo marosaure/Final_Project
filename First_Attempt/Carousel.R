@@ -25,12 +25,12 @@ ui <- fluidPage(
       class = "carousel-inner",
       tags$div(
         class = "item active",
-        tags$img(src = "try_cat.png", alt = "1"),
+        tags$img(src = "First_Attempt/www/fridge.jpeg", alt = "1", height = "1024px", width = "100%"),
         tags$div(
           class = "container",
           tags$div(
             class = "carousel-caption",
-            tags$h1(class = "fit-head", "Looking for a particular area?"),
+            tags$h1(class = "fit-head", "Don't want to be stressed when shopping?"),
             tags$p(
               class = "fit-text",
               "Use Intelligentsia's interactive map to identify pockets of opportunity."
@@ -48,12 +48,12 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "WhatsApp Image 2023-05-02 at 15.33.28.jpeg", alt = "2"),
+        tags$img(src = "fruits.png", alt = "2"),
         tags$div(
           class = "container",
           tags$div(
             class = "carousel-caption",
-            tags$h1(class = "fit-head", "Compare your investment options"),
+            tags$h1(class = "fit-head", "Try My Fridge!"),
             tags$p(
               class = "fit-text",
               "You have already identified a few locations and want to compare them?"
@@ -69,7 +69,7 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "try cat.png", alt = "3"),
+        tags$img(src = "legumes.png", alt = "3"),
         tags$div(
           class = "container",
           tags$div(

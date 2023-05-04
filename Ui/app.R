@@ -12,11 +12,22 @@ library(dplyr)
 library(stringr)
 library(png)
 library(htmltools)
+library(vembedr)
 
 # Define UI for application that draws a histogram
-ui <- navbarPage(title = "Welcome to fridge!", 
-                 id = "main_navbar",
-                 footer = includeHTML("www/footer.html"),
+ui <- fluidPage(
+  titlePanel("Our nice fridge"),
+  
+  navbarPage(title = img(src = "fridge_logo.png", height = 30), 
+             theme = "paper.css",
+             id = "main_navbar",
+             footer = includeHTML("www/footer.html"),
+             header = tags$style(
+               ".navbar-right {
+                       float: right !important;
+                       }",
+               "body {padding-top: 75px;}"),
+             
                  
                  tabPanel("Home", value = "home",
                           fluidRow(
@@ -37,7 +48,21 @@ ui <- navbarPage(title = "Welcome to fridge!",
                           ),
                           
                           fluidRow(
-                            tags$embed(src = "https://youtu.be/0Ix8hIqB_8k", width = "640", height = "360")
+                            embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
+                              use_align("center") %>%
+                              use_rounded(radius = 10)
+                          ),
+                          
+                          fluidRow(
+                            tags$iframe(
+                              style="border-radius:12px", 
+                              src="https://open.spotify.com/embed/artist/3RwQ26hR2tJtA8F9p2n7jG?utm_source=generator", 
+                              width="100%", 
+                              height="380", 
+                              frameBorder="0", 
+                              allowfullscreen="", 
+                              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture", 
+                              loading="lazy")
                           ),
                           
                           tags$hr(),
@@ -85,6 +110,7 @@ ui <- navbarPage(title = "Welcome to fridge!",
                           ),
                           ),
                  
+ ),
 )
 
 server <- function(input, output){

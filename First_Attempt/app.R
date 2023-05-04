@@ -81,10 +81,10 @@ server <- function(input, output) {
     
     output$img2 <- renderImage({
       # Use the 'img2' file in the www directory
-      filename <- "try cat.png"
+      filename <- "First_Attempt/www/try cat.png"
       path <- paste(getwd(), "/", filename, sep="")
       # Return a list containing the filename
-      list(src = path, alt = "try cat.png")
+      list(src = path, alt = "First_Attempt/www/try cat.png")
     }, deleteFile = FALSE)
 
 }

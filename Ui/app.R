@@ -54,10 +54,34 @@ ui <- fluidPage(
                           ),
                           
                           fluidRow(
+                            tags$head(
+                              tags$script(src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"),
+                              tags$link(href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel = "stylesheet")
+                            ),
+                            column(width = 12,
+                                   div(class = "carousel slide", id = "myCarousel",
+                                       tags$ol(class = "carousel-indicators",
+                                               tags$li(data_target = "#myCarousel", data_slide_to = "0", class = "active"),
+                                               tags$li(data_target = "#myCarousel", data_slide_to = "1"),
+                                               tags$li(data_target = "#myCarousel", data_slide_to = "2")),
+                                       div(class = "carousel-inner",
+                                           div(class = "item active", tags$iframe(src = "https://www.youtube.com/embed/0Ix8hIqB_8k", alt = "1")),
+                                           div(class = "item", tags$iframe(src = "https://www.youtube.com/embed/2WecH55oT88", alt = "2")),
+                                           div(class = "item", tags$iframe(src = "https://www.youtube.com/embed/LhbyjTybuXs", alt = "3"))
+                                       ),
+                                       a(href = "#myCarousel", class = "left carousel-control", data_slide = "prev",
+                                         span(class = "glyphicon glyphicon-chevron-left")),
+                                       a(href = "#myCarousel", class = "right carousel-control", data_slide = "next",
+                                         span(class = "glyphicon glyphicon-chevron-right"))
+                                   )
+                            )
+                          ),
+                          
+                          fluidRow(
                             tags$iframe(
                               style="border-radius:12px", 
                               src="https://open.spotify.com/embed/artist/3RwQ26hR2tJtA8F9p2n7jG?utm_source=generator", 
-                              width="100%", 
+                              width="%", 
                               height="380", 
                               frameBorder="0", 
                               allowfullscreen="", 

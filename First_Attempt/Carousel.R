@@ -25,7 +25,7 @@ ui <- fluidPage(
       class = "carousel-inner",
       tags$div(
         class = "item active",
-        tags$img(src = "First_Attempt/www/fridge.jpeg", alt = "1", height = "1024px", width = "100%"),
+        tags$img(src = "fridge.png", alt = "1", height = "1024px", width = "100%"),
         tags$div(
           class = "container",
           tags$div(

@@ -20,6 +20,8 @@ ui <- fluidPage(
       #Fin
       ),
     
+    
+    
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -40,17 +42,12 @@ ui <- fluidPage(
            
            #image
            renderImage("WhatsApp Image 2023-05-02 at 15.33.28.jpeg"),
-           
-           #text
-           helpText("Note: while the data view will show only",
-                    "the specified number of observations, the",
-                    "summary will be based on the full dataset."),
         
         #HTML TEXT? 
         fluidRow(
           style = "height:50px;",
-          column(3),
-          column(6,
+          column(6),
+          column(12,
                  shiny::HTML("<br><br><center> <h1>What you'll find here</h1> </center><br>"),
                  shiny::HTML("<h5>An interactive tool to help you explore the actual paths employees 
                                                    have taken during their County careers. With information about the 
@@ -59,9 +56,7 @@ ui <- fluidPage(
           ),
           column(3)
         ),
-        fluidRow(style = "height:25px;",
-                 
-        )
+        fluidRow(style = "height:25px;",)
         
         
         )
@@ -86,10 +81,10 @@ server <- function(input, output) {
     
     output$img2 <- renderImage({
       # Use the 'img2' file in the www directory
-      filename <- "WhatsApp Image 2023-05-02 at 15.33.28.jpeg"
+      filename <- "try cat.png"
       path <- paste(getwd(), "/", filename, sep="")
       # Return a list containing the filename
-      list(src = path, alt = "WhatsApp Image 2023-05-02 at 15.33.28.jpeg")
+      list(src = path, alt = "try cat.png")
     }, deleteFile = FALSE)
 
 }

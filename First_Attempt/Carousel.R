@@ -25,7 +25,7 @@ ui <- fluidPage(
       class = "carousel-inner",
       tags$div(
         class = "item active",
-        tags$img(src = "First_Attempt/www/fridge.jpeg", alt = "1", height = "1024px", width = "100%"),
+        tags$img(src = "fridge_q.png", alt = "1", height = "1024px", width = "100%"),
         tags$div(
           class = "container",
           tags$div(
@@ -48,7 +48,7 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "fruits.png", alt = "2"),
+        tags$img(src = "fruits_m.png", alt = "2", height = "1024px", width = "100%"),
         tags$div(
           class = "container",
           tags$div(
@@ -69,7 +69,7 @@ ui <- fluidPage(
       ),
       tags$div(
         class = "item",
-        tags$img(src = "legumes.png", alt = "3"),
+        tags$img(src = "legume_p.png", alt = "3", height = "2000px", width = "100%"),
         tags$div(
           class = "container",
           tags$div(

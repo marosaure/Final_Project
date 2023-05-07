@@ -23,9 +23,10 @@ ui <- fluidPage(
         add_rank_list(
           text = "Drag from here",
           labels = list(
-            "one",
-            "two",
-            "three",
+            "one" = tags$img(src = "jpegessai.jpg"),
+            "two" = tags$img(src = "jpegessai.jpg"),
+            "three" = tags$img(src = "jpegessai.jpg"),
+            "four" = tags$img(src = "jpegessai.jpg"),
             htmltools::tags$div(
               htmltools::em("Complex"), " html tag without a name"
             ),
@@ -60,7 +61,7 @@ ui <- fluidPage(
         verbatimTextOutput("results_3")
       )
     )
-  )
+  )  #End of fluid row which gives results. can be deleted (?) 
 )
 
 server <- function(input, output, session) {

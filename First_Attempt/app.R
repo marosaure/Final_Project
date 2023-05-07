@@ -47,15 +47,15 @@ ui <- fluidPage(
         class = "carousel-inner",
         tags$div(
           class = "item active",
-          tags$img(src = "fridge_image.png", alt = "1", height = "1024px", width = "100%"),
+          tags$img(src = "fridge_q.png", alt = "1", height = "1024px", width = "100%"),
           tags$div(
             class = "container",
             tags$div(
               class = "carousel-caption",
-              tags$h1(class = "fit-head", "Don't want to be stressed when shopping?"),
+              tags$h1(class = "fit-head", "Welcome to My Fridge!"),
               tags$p(
                 class = "fit-text",
-                "Use Intelligentsia's interactive map to identify pockets of opportunity."
+                "Don't want to be stressed while shopping? Then take a tour in our App!"
               ),
               tags$p(
                 tags$a(
@@ -70,15 +70,15 @@ ui <- fluidPage(
         ),
         tags$div(
           class = "item",
-          tags$img(src = "fruits.png", alt = "2"),
+          tags$img(src = "fruits_m.png", alt = "2", height = "1024px", width = "100%"),
           tags$div(
             class = "container",
             tags$div(
               class = "carousel-caption",
-              tags$h1(class = "fit-head", "Try My Fridge!"),
+              tags$h1(class = "fit-head", "You want to live more sustainaly?"),
               tags$p(
                 class = "fit-text",
-                "You have already identified a few locations and want to compare them?"
+                "Learn how long your food actually lasts, and how to reduce food waste."
               ),
               tags$a(
                 class = "btn btn-lg btn-primary",
@@ -91,15 +91,15 @@ ui <- fluidPage(
         ),
         tags$div(
           class = "item",
-          tags$img(src = "legumes.png", alt = "3"),
+          tags$img(src = "legume_p.png", alt = "3", height = "2000px", width = "100%"),
           tags$div(
             class = "container",
             tags$div(
               class = "carousel-caption",
-              tags$h1(class = "fit-head", "Identify new opportunities"),
+              tags$h1(class = "fit-head", "No idea what to eat for dinner?"),
               tags$p(
                 class = "fit-text",
-                "You want to invest into real estate, but don't know where?"
+                "Check out our proposed recipes that are both tasty and help you use up the leftover food in your fridge"
               ),
               tags$p(
                 tags$a(

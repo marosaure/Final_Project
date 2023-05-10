@@ -81,7 +81,7 @@ ui <- fluidPage(
                             tags$iframe(
                               style="border-radius:12px", 
                               src="https://open.spotify.com/embed/artist/3RwQ26hR2tJtA8F9p2n7jG?utm_source=generator", 
-                              width="%", 
+                              width="100%", 
                               height="380", 
                               frameBorder="0", 
                               allowfullscreen="", 

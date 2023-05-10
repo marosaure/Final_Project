@@ -7,13 +7,14 @@ library(htmltools)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Our nice fridge"),
+    titlePanel(title = "Our nice fridge"),
     
     #navigation bar
     navbarPage(
       title = img(src = "fridge_logo.png", height = 30),
       id = "main_navbar",
       footer = includeHTML("www/footer.html"),
+      theme = "style.css",
       
       #Tabs
       tabPanel("Home", value = "home",
@@ -141,7 +142,67 @@ ui <- fluidPage(
                  column(6),
                  embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
                    use_align("center") %>%
-                   use_rounded(radius = 10)
+                   use_rounded(radius = 10),
+                 
+                 #Video Carousel
+                 tags$div(
+                   id = "myCarouselv",
+                   class = "carousel slide",
+                   "data-ride" = "carousel",
+                   tags$ol(
+                     class = "carousel-indicators",
+                     tags$li(
+                       class = "active",
+                       "data-target" = "#myCarouselv",
+                       "data-slide-to" = "0"
+                     ),
+                     tags$li(
+                       "data-target" = "#myCarouselv",
+                       "data-slide-to" = "1"
+                     ),
+                     tags$li(
+                       "data-target" = "#myCarouselv",
+                       "data-slide-to" = "2"
+                     )
+                   ),
+                   tags$div(
+                     class = "carousel-inner",
+                     tags$div(
+                       class = "item active",
+                       embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
+                         use_align("center") %>%
+                         use_rounded(radius = 10),
+                       
+                     ),
+                     tags$div(
+                       class = "item",
+                       embed_url("https://youtu.be/2WecH55oT88") %>%
+                         use_align("center") %>%
+                         use_rounded(radius = 10),
+                       
+                     ),
+                     tags$div(
+                       class = "item",
+                       embed_url("https://youtu.be/LhbyjTybuXs") %>%
+                         use_align("center") %>%
+                         use_rounded(radius = 10),
+                       
+                     )
+                   ),
+                   tags$a(
+                     class = "left carousel-control",
+                     href = "#myCarouselv",
+                     "data-slide" = "prev",
+                     tags$span(class = "glyphicon glyphicon-chevron-left")
+                   ),
+                   tags$a(
+                     class = "right carousel-control",
+                     href = "#myCarouselv",
+                     "data-slide" = "next",
+                     tags$span(class = "glyphicon glyphicon-chevron-right")
+                   )
+                 ),
+                 
                ),
                
                fluidRow(

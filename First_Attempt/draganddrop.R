@@ -8,6 +8,7 @@ library(htmltools)
 
 
 ui <- fluidPage(
+  
   tags$head(
     tags$style(HTML(".bucket-list-container {min-height: 350px;}"))
   ),
@@ -24,10 +25,10 @@ ui <- fluidPage(
         add_rank_list(
           text = "Drag from here",
           labels = list(
-            "one" = tags$img(src = "apple.jpg", width = 50, height= 50),
-            "two" = tags$img(src = "banana.jpg", width = 50, height= 50),
-            "three" = tags$img(src = "polutry.jpg", width = 50, height= 50),
-            "four" = tags$img(src = "jpegessai.jpg", width = 50, height= 50),
+            "apple" = tags$img(src = "apple.jpg", width = 50, height= 50),
+            "banana" = tags$img(src = "banana.jpg", width = 50, height= 50),
+            "poultry" = tags$img(src = "polutry.jpg", width = 50, height= 50),
+            "image" = tags$img(src = "jpegessai.jpg", width = 50, height= 50),
             htmltools::tags$div(
               htmltools::em("Complex"), " html tag without a name"
             ),
@@ -78,18 +79,26 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  output$results_1 <-
-    renderPrint(
-      input$rank_list_1 # This matches the input_id of the first rank list
+  output$results_1 <- renderPrint(input$rank_list_1) # This matches the input_id of the first rank list)
+  output$results_2 <- renderPrint(input$rank_list_2) # This matches the input_id of the second rank list
+  output$results_3 <- renderPrint(input$bucket_list_group) # Matches the group_name of the bucket list
+  
+observeEvent(input$rank_list_2, {
+  selected_items <- input$rank_list_2
+  item_text <- lapply(selected_items, function(item) {
+    switch(
+      item,
+      "apple" = "You dropped an apple.",
+      "banana" = "You dropped a banana.",
+      "poultry" = "You dropped poultry.",
+      "image" = "You dropped an image.",
+      "five" = "You dropped the complex HTML tag with name 'five'.",
+      "Complex html tag without a name" = "You dropped the complex HTML tag without a name.",
+      "default" = "Unknown item dropped."
     )
-  output$results_2 <-
-    renderPrint(
-      input$rank_list_2 # This matches the input_id of the second rank list
-    )
-  output$results_3 <-
-    renderPrint(
-      input$bucket_list_group # Matches the group_name of the bucket list
-    )
+  })
+  output$results_2 <- renderText(item_text)
+})
   
 }
 

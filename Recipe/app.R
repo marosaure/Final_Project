@@ -9,6 +9,11 @@
 
 library(shiny)
 library(shinyglide)
+library(dplyr)
+library(stringr)
+
+ingredients <- c("avocado", "bacon", "bread", "butter", "cheese", "egg", "mushroom", "pasta", "potato", "tomato")
+load("recipe.rda")
 
 #UI
 ui <- fluidPage(
@@ -25,37 +30,25 @@ ui <- fluidPage(
     
     tabPanel("Myfridge",
              
+             ),
+    tabPanel("Give Me a Recipe!",
+             
              sidebarLayout(
                sidebarPanel(
                  width = 3,
                  
-                 uiOutput("selected_stops_UI"),
+                 checkboxGroupInput("checkgroup", label = h4("Choose your ingredients"), 
+                                    choices = ingredients),
+                 
                  actionButton("refresh", "Refresh")
                  
                ),
-               mainPanel(DT::dataTableOutput("bus_table"))
-             ),
-
-             ),
-    tabPanel("Give Me a Recipe!",
-             
-             glide(
-               id = "plot-glide",
-               height = "450px",
-               controls_position = "top",
-               
-               
-               
-               screen(
-                 p("Please choose the ingredients up to 2."),
-                 numericInput("n", "n :", value = 100)
-               ),
-               screen(
-                 p("Here is your amazing recipe!"),
-                 plotOutput("plot")
+               mainPanel(
+                 
+                 htmlOutput("content")
+                 
                )
-             )
-             
+             ),
              
              ),
     tabPanel("Usefull Maps")
@@ -65,9 +58,53 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
-  output$plot <- renderPlot({
-    hist(rnorm(input$n), main = paste("n =", input$n))
+  observe({
+    checkgroup <- input$checkgroup
+    if (length(checkgroup) > 2) {
+      checkgroup <- checkgroup[1:2]
+      updateCheckboxGroupInput(
+        session = getDefaultReactiveDomain(),
+        inputId = "checkgroup",
+        selected = tail(input$checkgroup ,2)
+      )
+    }
   })
+  
+  output$content <- renderUI({
+    checkgroup <- input$checkgroup
+    
+    filtered_items <- data.frame()
+    
+    if (length(checkgroup) == 0){
+      HTML("No recipes found.")
+    } else {
+      filtered_items <- recipe %>% 
+        group_by(item) %>% 
+        filter(str_detect(ingredient, paste(checkgroup, collapse = "|")))
+    }
+    
+    if (nrow(filtered_items) == 0) {
+      HTML("No recipes found.")
+    } else {
+      output_html <- ""
+      for (i in 1:nrow(filtered_items)) {
+        output_html <- paste(output_html, "<h1>", filtered_items$item[i], "</h1>", "<br>",
+                             "<h4>", "Cook_time : ", "</h4>","<br><br>",
+                             filtered_items$cook_time[i], "<br><br>",
+                             tags$img(src = filtered_items$image[i], width = 200), "<br><br>",
+                             "<h4>", "Ingredients : ", "</h4>", "<br><br>",
+                             filtered_items$preparation[i], "<br><br>",
+                             "<h4>", "Recipe : ", "</h4>", "<br><br>",
+                             filtered_items$content[i], "<br><br>"
+                             )
+      }
+      HTML(output_html)
+    }
+  })
+  
+
+  
+
 }
 
 # Run the application 

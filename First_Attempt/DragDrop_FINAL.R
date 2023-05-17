@@ -22,9 +22,15 @@ ui <- fluidPage(
           labels = list(
             "apple" = tags$img(src = "pomme.jpg", width = 50, height= 50),
             "banana" = tags$img(src = "banana.jpg", width = 50, height= 50),
-            "poultry" = tags$img(src = "chicken.jpg", width = 50, height= 50),
             "pineapple" = tags$img(src = "ananas.jpg", width = 50, height= 50),
-            "raspberry" = tags$img(src = "framboise.jpg", width = 50, height= 50)
+            "raspberry" = tags$img(src = "framboise.jpg", width = 50, height= 50),
+            "pear"= tags$img(src = "pear.jpg", width = 50, height= 50),
+            "oorange"= tags$img(src = "orange.jpg", width = 50, height= 50),
+            "strawberry"= tags$img(src = "strawberry.jpg", width = 50, height= 50),
+            "lemon"= tags$img(src = "lemon.jpg", width = 50, height= 50),
+            "mango"= tags$img(src = "mangue.jpg", width = 50, height= 50),
+            "poultry" = tags$img(src = "chicken.jpg", width = 50, height= 50),
+            
           ),
           input_id = "rank_list_1"
         ),

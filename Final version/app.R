@@ -261,23 +261,7 @@ ui <- fluidPage(
              
              
              ),
-    tabPanel("Usefull Maps",
-             
-             sidebarLayout(
-               sidebarPanel(
-                 sliderInput("max_distance", "Maximum distance (in meters):",
-                             min = 0, max = 10000, value = 10000, step = 100),
-                 textInput("address", "Enter your address:"),
-                 selectInput("store_type", "Choose a location type:", choices = c("All", unique(stores$type))),
-                 selectInput("opening_hours", "Choose Opening Hours:", choices = c("All", unique(stores$opening_hours))), # New input for Opening Hours
-                 actionButton("enter", "Enter")  # 'Enter' button moved here
-               ),
-               mainPanel(
-                 leafletOutput("map")
-               )
-             )
-             
-             ),
+    
     tabPanel("Caloric calculator",
              
              tags$h1("Calories you need"),
@@ -331,6 +315,26 @@ ui <- fluidPage(
                  plotlyOutput("needsPlot"), # change to plotlyOutput
                  tags$h3("Information"),
                  tags$p("Caloric needs are calculated based on your weight, height, age, sex, and physical activity level. They represent the estimated number of calories you need each day to maintain your current weight.")
+               )
+             )
+             
+             ),
+    
+    tabPanel("Usefull Maps",
+             
+             tags$h1("Find your nearest green shop"),
+             
+             sidebarLayout(
+               sidebarPanel(
+                 sliderInput("max_distance", "Maximum distance (in meters):",
+                             min = 0, max = 10000, value = 10000, step = 100),
+                 textInput("address", "Enter your address:"),
+                 selectInput("store_type", "Choose a location type:", choices = c("All", unique(stores$type))),
+                 selectInput("opening_hours", "Choose Opening Hours:", choices = c("All", unique(stores$opening_hours))), # New input for Opening Hours
+                 actionButton("enter", "Enter")  # 'Enter' button moved here
+               ),
+               mainPanel(
+                 leafletOutput("map")
                )
              )
              

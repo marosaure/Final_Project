@@ -13,7 +13,6 @@ ui <- fluidPage(
     column(
       tags$h2("MyFridge"),
       width = 12,
-      # style = "background-image: url(https://cdn.pixabay.com/photo/2015/09/21/14/23/supermarket-949912_1280.jpg); background-size: cover;",
       bucket_list(
         header = "You are now in your fridge simulator. On the left, you have a selection of various foods. Pick the ones you bought, and drag them to the fridge on the right in order to put them in the fridge.",
         group_name = "bucket_list_group",
@@ -21,30 +20,30 @@ ui <- fluidPage(
         add_rank_list(
           text = "Drag from here",
           labels = list(
-            "apple" = tags$img(src = "pomme.jpg", width = 50, height= 50),
-            "banana" = tags$img(src = "banana.jpg", width = 50, height= 50),
-            "pineapple" = tags$img(src = "ananas.jpg", width = 50, height= 50),
-            "raspberry" = tags$img(src = "framboise.jpg", width = 50, height= 50),
-            "pear"= tags$img(src = "pear.jpg", width = 50, height= 50),
-            "oorange"= tags$img(src = "orange.jpg", width = 50, height= 50),
-            "strawberry"= tags$img(src = "strawberry.jpg", width = 50, height= 50),
-            "lemon"= tags$img(src = "lemon.jpg", width = 50, height= 50),
-            "mango"= tags$img(src = "mangue.jpg", width = 50, height= 50),
-            "poultry" = tags$img(src = "chicken.jpg", width = 50, height= 50),
-            "butter" = tags$img(src = "butter-gc94092df4_640.jpg", width = 50, height= 50),
-            "cheese0" = tags$img(src = "fromage.jpg", width = 50, height= 50),
-            "cheese1" = tags$img(src = "mozzarella-g0cb07633a_640.jpg", width = 50, height= 50),
-            "milk" = tags$img(src = "milk.jpg", width = 50, height= 50),
-            "yaourt" = tags$img(src = "yogut.jpg", width = 50, height= 50),
-            "salad" = tags$img(src = "salad.jpg", width = 50, height= 50),
-            "cucumber" = tags$img(src = "cucumber.jpg", width = 50, height= 50),
-            "carot" = tags$img(src = "carotte.jpg", width = 50, height= 50),
-            "tomahtoh" = tags$img(src = "tomato.jpg", width = 50, height= 50),
-            "asparagus" = tags$img(src = "asparagus.jpg", width = 50, height= 50),
-            "radish" = tags$img(src = "radish.jpg", width = 50, height= 50),
-            "onion" = tags$img(src = "onion.jpg", width = 50, height= 50),
-            "garlic" = tags$img(src = "garlic.jpg", width = 50, height= 50),
-            "peppers" = tags$img(src = "poivron.jpg", width = 50, height= 50)
+            "apple" = tags$div(tags$img(src = "pomme.jpg", width = 50, height= 50), "Apple"),
+            "banana" = tags$div(tags$img(src = "banana.jpg", width = 50, height= 50), "Banana"),
+            "pineapple" = tags$div(tags$img(src = "ananas.jpg", width = 50, height= 50), "Pineapple"),
+            "raspberry" = tags$div(tags$img(src = "framboise.jpg", width = 50, height= 50), "Raspeberries"),
+            "pear"= tags$div(tags$img(src = "pear.jpg", width = 50, height= 50), "Pears"),
+            "oorange"= tags$div(tags$img(src = "orange.jpg", width = 50, height= 50), "Oranges and citrus fruits"),
+            "strawberry"= tags$div(tags$img(src = "strawberry.jpg", width = 50, height= 50), "Strawberries"),
+            "lemon"= tags$div(tags$img(src = "lemon.jpg", width = 50, height= 50), "Lemons"),
+            "mango"= tags$div(tags$img(src = "mangue.jpg", width = 50, height= 50), "Mango"),
+            "poultry" = tags$div(tags$img(src = "chicken.jpg", width = 50, height= 50), "Poultry"),
+            "butter" = tags$div(tags$img(src = "butter-gc94092df4_640.jpg", width = 50, height= 50), "Butter"),
+            "cheese0" = tags$div(tags$img(src = "fromage.jpg", width = 50, height= 50), "Hard Cheeses"),
+            "cheese1" = tags$div(tags$img(src = "mozzarella-g0cb07633a_640.jpg", width = 50, height= 50), "Soft Cheeses"),
+            "milk" = tags$div(tags$img(src = "milk.jpg", width = 50, height= 50), "Milk"),
+            "yaourt" = tags$div(tags$img(src = "yogut.jpg", width = 50, height= 50), "Yogurt"),
+            "salad" = tags$div(tags$img(src = "salad.jpg", width = 50, height= 50), "Salad and Leafy Greens"),
+            "cucumber" = tags$div(tags$img(src = "cucumber.jpg", width = 50, height= 50), "Cucumber"),
+            "carot" = tags$div(tags$img(src = "carotte.jpg", width = 50, height= 50), "Carrot"),
+            "tomahtoh" = tags$div(tags$img(src = "tomato.jpg", width = 50, height= 50), "Tomato"),
+            "asparagus" = tags$div(tags$img(src = "asparagus.jpg", width = 50, height= 50), "Asparagus"),
+            "radish" = tags$div(tags$img(src = "radish.jpg", width = 50, height= 50), "Radish"),
+            "onion" = tags$div(tags$img(src = "onion.jpg", width = 50, height= 50), "Onions"),
+            "garlic" = tags$div(tags$img(src = "garlic.jpg", width = 50, height= 50), "Garlic"),
+            "peppers" = tags$div(tags$img(src = "poivron.jpg", width = 50, height= 50), "Peppers")
           ),
           input_id = "rank_list_1"
         ),
@@ -72,20 +71,15 @@ ui <- fluidPage(
       tags$b("Result"),
       column(
         width = 12,
-        tags$p("input$rank_list_2"),
-        verbatimTextOutput("results_2"),
-        tags$p("input$bucket_list_group"),
-        verbatimTextOutput("results_3")
+        verbatimTextOutput("results_2")
       )
     )
   )  #End of fluid row which gives results. can be deleted (?) 
 )
 
 server <- function(input, output, session) {
-  #output$results_1 <- renderPrint(input$rank_list_1) # This matches the input_id of the first rank list)
   output$results_2 <- renderPrint(input$rank_list_2) # This matches the input_id of the second rank list
-  #output$results_3 <- renderPrint(input$bucket_list_group) # Matches the group_name of the bucket list
-  
+
   observeEvent(input$rank_list_2, {
     selected_items <- input$rank_list_2
     item_text <- lapply(selected_items, function(item) {

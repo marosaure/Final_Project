@@ -20,10 +20,11 @@ ui <- fluidPage(
         add_rank_list(
           text = "Drag from here",
           labels = list(
-            "apple" = tags$img(src = "apple.jpg", width = 50, height= 50),
+            "apple" = tags$img(src = "pomme.jpg", width = 50, height= 50),
             "banana" = tags$img(src = "banana.jpg", width = 50, height= 50),
-            "poultry" = tags$img(src = "jpegessai.jpg", width = 50, height= 50),
-            "image" = tags$img(src = "jpegessai.jpg", width = 50, height= 50)
+            "poultry" = tags$img(src = "chicken.jpg", width = 50, height= 50),
+            "pineapple" = tags$img(src = "ananas.jpg", width = 50, height= 50),
+            "raspberry" = tags$img(src = "framboise.jpg", width = 50, height= 50)
           ),
           input_id = "rank_list_1"
         ),
@@ -70,7 +71,7 @@ server <- function(input, output, session) {
     item_text <- lapply(selected_items, function(item) {
       switch(
         item,
-        "apple" = "You dropped an apple.",
+        "apple" = "Apples usually keep in the fridge 4 to 6 weeks. Once cut, they last for up to 5 days.",
         "banana" = "You dropped a banana.",
         "poultry" = "You dropped poultry.",
         "image" = "You dropped an image.",

@@ -6,13 +6,14 @@ library(htmltools)
 ui <- fluidPage(
   
   tags$head(
-    tags$style(HTML(".bucket-list-container {min-height: 350px;}"))
+    tags$style(HTML(".bucket-list-container {min-height: 450px;}
+                    h2 {font-size: 30px;}"))
   ),
   fluidRow(
     column(
       tags$b("MyFridge"),
       width = 12,
-      # style = "background-image: url(https://images.unsplash.com/photo-1583542225715-473a32c9b0ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80); background-size: cover;",
+      # style = "background-image: url(https://cdn.pixabay.com/photo/2015/09/21/14/23/supermarket-949912_1280.jpg); background-size: cover;",
       bucket_list(
         header = "You are now in your fridge simulator. On the left, you have a selection of various foods. Pick the ones you bought, and drag them to the fridge on the right in order to put them in the fridge.",
         group_name = "bucket_list_group",
@@ -34,7 +35,16 @@ ui <- fluidPage(
             "cheese0" = tags$img(src = "fromage.jpg", width = 50, height= 50),
             "cheese1" = tags$img(src = "mozzarella-g0cb07633a_640.jpg", width = 50, height= 50),
             "milk" = tags$img(src = "milk.jpg", width = 50, height= 50),
-            "yaourt" = tags$img(src = "yogut.jpg", width = 50, height= 50)
+            "yaourt" = tags$img(src = "yogut.jpg", width = 50, height= 50),
+            "salad" = tags$img(src = "salad.jpg", width = 50, height= 50),
+            "cucumber" = tags$img(src = "cucumber.jpg", width = 50, height= 50),
+            "carot" = tags$img(src = "carotte.jpg", width = 50, height= 50),
+            "tomahtoh" = tags$img(src = "tomato.jpg", width = 50, height= 50),
+            "asparagus" = tags$img(src = "asparagus.jpg", width = 50, height= 50),
+            "radish" = tags$img(src = "radish.jpg", width = 50, height= 50),
+            "onion" = tags$img(src = "onion.jpg", width = 50, height= 50),
+            "garlic" = tags$img(src = "garlic.jpg", width = 50, height= 50),
+            "peppers" = tags$img(src = "poivron.jpg", width = 50, height= 50)
           ),
           input_id = "rank_list_1"
         ),
@@ -96,7 +106,15 @@ server <- function(input, output, session) {
         "cheese1" = "Mozzarella can be stored in the fridge for up to 1 week. It has about 280 calories per 100g and is a good source of protein and calcium.",
         "milk" = "Milk should be consumed within 1 week of opening, but can last up to 2 weeks. It has about 42 calories per 100g and is a good source of calcium and vitamin D.",
         "yaourt" = "Yogurt can be stored in the fridge for up to 2 weeks. It has about 59 calories per 100g and is high in protein and calcium.",
-        "image" = "You dropped an image.",
+        "salad" = "Salad greens can last in the fridge for up to a week. They contain about 5 calories per 100g and are a good source of dietary fiber.",
+        "cucumber" = "Cucumbers can be stored in the fridge for up to a week. They contain about 15 calories per 100g and are high in vitamin K.",
+        "carot" = "Carrots can be kept in the fridge for up to 2-3 weeks. They contain about 41 calories per 100g and are high in vitamin A.",
+        "tomahtoh" = "Tomatoes are best stored at room temperature and can last for up to a week. They contain about 18 calories per 100g and are high in vitamin C.",
+        "asparagus" = "Asparagus can be refrigerated for up to 5 days. They contain about 20 calories per 100g and are a good source of dietary fiber and vitamin K.",
+        "radish" = "Radishes can be stored in the fridge for up to 2 weeks. They contain about 16 calories per 100g and are high in vitamin C.",
+        "onion" = "Onions can be stored in a cool, dry place for up to 2 months. They contain about 40 calories per 100g and are a good source of dietary fiber.",
+        "garlic" = "Garlic can be stored in a cool, dry place for up to 2 months. It contains about 149 calories per 100g and is a good source of vitamin C and vitamin B6.",
+        "peppers" = "Peppers can be stored in the fridge for up to 1 week. They contain about 20 calories per 100g and are high in vitamin C.",
         
         "default" = "Unknown item dropped."
       )

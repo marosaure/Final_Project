@@ -1,11 +1,4 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+
 
 library(shiny)
 library(shinyglide)
@@ -37,7 +30,7 @@ ui <- fluidPage(
                sidebarPanel(
                  width = 3,
                  
-                 checkboxGroupInput("checkgroup", label = h4("Choose your ingredients"), 
+                 checkboxGroupInput("checkgroup", label = h4("Choose your ingredients up to 2"), 
                                     choices = ingredients),
                  
                  actionButton("refresh", "Refresh")
@@ -48,7 +41,7 @@ ui <- fluidPage(
                  htmlOutput("content")
                  
                )
-             ),
+             )
              
              ),
     tabPanel("Usefull Maps")
@@ -80,7 +73,8 @@ server <- function(input, output) {
     } else {
       filtered_items <- recipe %>% 
         group_by(item) %>% 
-        filter(str_detect(ingredient, paste(checkgroup, collapse = "|")))
+        filter(all(sapply(checkgroup, function(x) any(str_detect(ingredient, x))))) %>%
+        filter(! duplicated(item))
     }
     
     if (nrow(filtered_items) == 0) {
@@ -95,7 +89,8 @@ server <- function(input, output) {
                              "<h4>", "Ingredients : ", "</h4>", "<br><br>",
                              filtered_items$preparation[i], "<br><br>",
                              "<h4>", "Recipe : ", "</h4>", "<br><br>",
-                             filtered_items$content[i], "<br><br>"
+                             filtered_items$content[i], "<br><br>",
+                             "<hr>"
                              )
       }
       HTML(output_html)

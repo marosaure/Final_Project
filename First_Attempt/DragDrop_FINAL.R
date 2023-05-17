@@ -11,7 +11,7 @@ ui <- fluidPage(
   ),
   fluidRow(
     column(
-      tags$b("MyFridge"),
+      tags$h2("MyFridge"),
       width = 12,
       # style = "background-image: url(https://cdn.pixabay.com/photo/2015/09/21/14/23/supermarket-949912_1280.jpg); background-size: cover;",
       bucket_list(

@@ -165,6 +165,12 @@ ui <- fluidPage(
                  use_rounded(radius = 10),
                
                #Video Carousel
+               tags$head(
+                 tags$style(HTML('#myCarouselv {width: 500px; height: 300px; margin: 0 auto;}'))
+               ),
+               
+               
+               
                tags$div(
                  id = "myCarouselv",
                  class = "carousel slide",

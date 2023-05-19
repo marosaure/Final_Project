@@ -22,7 +22,7 @@ ui <- fluidPage(
       tags$h2("MyFridge"),
       width = 12,
       bucket_list(
-        header = "You are now in your fridge simulator. On the left, you have a selection of various foods. Pick the ones you bought, and drag them to the fridge on the right in order to put them in the fridge.",
+        header = "You are now in your fridge simulator. On the left, you have a selection of various foods. Pick the ones you bought, and drag them to the fridge on the right in order to put them in the fridge. Below, you'll find a button that allows you to download the contents of your virtual firdge, in order for you to keep track of what you have. ",
         group_name = "bucket_list_group",
         orientation = "horizontal",
         add_rank_list(
@@ -66,6 +66,7 @@ ui <- fluidPage(
           input_id = "rank_list_2"
         )
       ),
+      tags$br(),
       tags$style(
         HTML("
           .rank-list-container.custom-sortable {
@@ -79,6 +80,18 @@ ui <- fluidPage(
       downloadButton("downloadData", "Download")
     )
   ),
+  tags$br(),
+
+  
+  fluidRow(
+    column(
+      width = 12,
+      tags$p("The file you can download is a csv file. It allows you to further edit it, by for example adding colors or exact quantities, or the exact best-before date.")
+    )
+  ),
+  tags$br(),
+
+  
   fluidRow(
     column(
       width = 12,
@@ -87,18 +100,11 @@ ui <- fluidPage(
         width = 12,
         verbatimTextOutput("results_2")
       ),
-      column(
-        width = 12,
-        tags$p("Explanatory text below the results section.")
-      )
     )
   ),
-  fluidRow(
-    column(
-      width = 12,
-      tags$p("Explanatory text above the download button.")
-    )
-  )
+  tags$br(),
+  tags$br(),
+  
 )
 
 server <- function(input, output, session) {

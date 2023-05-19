@@ -7,7 +7,9 @@ http://wrapbootstrap.com/preview/WB0JR603C
 
 body {
 	font-family: 'Raleway', sans-serif;
-              background: #80c47e;
+    
+    background-image: linear-gradient(50deg, #add7c2, #fff);
+    
 }
 
 code {
@@ -15,9 +17,33 @@ code {
 	font-size: 14px;
 }
 
+.fit-head {
+    color: #fff;
+    background-color: rgba(3, 3, 3, 0.5);
+    padding-top: 10px;
+}
+
+.fit-head {
+    color: #fff;
+    background-color: rgba(3, 3, 3, 0.5);
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.carousel-caption:hover{
+    background-color: transparent;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+
+.btn {
+  background-color: #97DFC6;
+}
+
 .navbar-default {
-  background-color: #00A064;
-    border-color: #ffffff;
+    color: #000;
+  background-color: #add7c2;
+    border-color: #add7c2;
 }
 
 
@@ -35,7 +61,7 @@ code {
 
 
 h1, h2, h3, h4, h5, h6 {
-	color: #333;
+	color: #000;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -51,8 +77,31 @@ h1 {
 	margin: 50px 0;
 }
 
+p {
+    color: #000;
+}
+
 h1.title{
 	color: #416983;
+}
+
+
+.carousel:hover{
+    background-color: rgba(0,0,0,0);
+
+}
+
+.carousel:hover .carousel-caption, .carousel.contrast .carousel-caption{
+    background-color: rgba(0,0,0,0);
+
+}
+
+.carousel-caption{
+    background-color: rgba(0,0,0,0);
+}
+
+.carousel.contrast{
+    background-color: rgba(0,0,0,0);
 }
 
 .carousel h1:after, .carousel h1:before {
@@ -111,9 +160,19 @@ h3 {
 .neg {
 	color: #c52828;
 }
+h4 {
+    color: #000;
+    background-color: #F0FFF0;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+a{
+    color: #000;
+}
 
 p {
-	color: #333;
+	color: #000;
 }
 
 code {
@@ -319,6 +378,7 @@ div#ss-connect-dialog a:visited {
 
 .property-card-container a:hover {
   text-decoration: none;
+  
 }
 
 .property-card-container figure {

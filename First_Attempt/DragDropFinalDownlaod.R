@@ -3,6 +3,8 @@ library(sortable)
 library(DiagrammeR)
 library(htmltools)
 
+load("ingredient_list.rda")
+
 ui <- fluidPage(
   
   tags$head(
@@ -14,8 +16,16 @@ ui <- fluidPage(
                       font-size: 16px;
                       padding: 20px;
                       border-radius: 10px;
-                      font-family: Arial, sans-serif;
-                    }"))
+                      font-family: Arial, sans-serif;}
+                      
+                    #fridgeItems {
+                      background-color: #FFFF99;
+                      color: #333;
+                      font-size: 16px;
+                      padding: 20px;
+                      border-radius: 10px;
+                      border: 10px;
+                      font-family: Arial, sans-serif;}"))
   ),
   fluidRow(
     column(
@@ -38,37 +48,7 @@ ui <- fluidPage(
         orientation = "horizontal",
         add_rank_list(
           text = "Drag from here",
-          labels = list(
-            "apple" = tags$div(tags$img(src = "pomme.jpg", width = 50, height= 50), "Apple"),
-            "banana" = tags$div(tags$img(src = "banana.jpg", width = 50, height= 50), "Banana"),
-            "pineapple" = tags$div(tags$img(src = "ananas.jpg", width = 50, height= 50), "Pineapple"),
-            "raspberry" = tags$div(tags$img(src = "framboise.jpg", width = 50, height= 50), "Raspeberries"),
-            "pear"= tags$div(tags$img(src = "pear.jpg", width = 50, height= 50), "Pears"),
-            "oorange"= tags$div(tags$img(src = "orange.jpg", width = 50, height= 50), "Oranges and citrus fruits"),
-            "strawberry"= tags$div(tags$img(src = "strawberry.jpg", width = 50, height= 50), "Strawberries"),
-            "lemon"= tags$div(tags$img(src = "lemon.jpg", width = 50, height= 50), "Lemons"),
-            "mango"= tags$div(tags$img(src = "mangue.jpg", width = 50, height= 50), "Mango"),
-            "butter" = tags$div(tags$img(src = "butter-gc94092df4_640.jpg", width = 50, height= 50), "Butter"),
-            "cheese0" = tags$div(tags$img(src = "fromage.jpg", width = 50, height= 50), "Hard Cheeses"),
-            "cheese1" = tags$div(tags$img(src = "mozzarella-g0cb07633a_640.jpg", width = 50, height= 50), "Soft Cheeses"),
-            "milk" = tags$div(tags$img(src = "milk.jpg", width = 50, height= 50), "Milk"),
-            "yaourt" = tags$div(tags$img(src = "yogut.jpg", width = 50, height= 50), "Yogurt"),
-            "salad" = tags$div(tags$img(src = "salad.jpg", width = 50, height= 50), "Salad and Leafy Greens"),
-            "cucumber" = tags$div(tags$img(src = "cucumber.jpg", width = 50, height= 50), "Cucumber"),
-            "carot" = tags$div(tags$img(src = "carotte.jpg", width = 50, height= 50), "Carrot"),
-            "tomahtoh" = tags$div(tags$img(src = "tomato.jpg", width = 50, height= 50), "Tomato"),
-            "asparagus" = tags$div(tags$img(src = "asparagus.jpg", width = 50, height= 50), "Asparagus"),
-            "radish" = tags$div(tags$img(src = "radish.jpg", width = 50, height= 50), "Radish"),
-            "onion" = tags$div(tags$img(src = "onion.jpg", width = 50, height= 50), "Onions"),
-            "garlic" = tags$div(tags$img(src = "garlic.jpg", width = 50, height= 50), "Garlic"),
-            "peppers" = tags$div(tags$img(src = "poivron.jpg", width = 50, height= 50), "Peppers"),
-            "seafood" = tags$div(tags$img(src = "fruits_de_mer.jpg", width = 50, height= 50), "Seafood"),
-            "tuna" = tags$div(tags$img(src = "thon.jpg", width = 50, height= 50), "Tuna"),
-            "salmonn" = tags$div(tags$img(src = "saumon.jpg", width = 50, height= 50), "Salmon"),
-            "pork" = tags$div(tags$img(src = "porc.jpg", width = 50, height= 50), "Pork"),
-            "lamb" = tags$div(tags$img(src = "agneau .jpg", width = 50, height= 50), "Lamb"),
-            "chicken" = tags$div(tags$img(src = "chicken.jpg", width = 50, height= 50), "Chicken")
-          ),
+          labels = ingredient_list,
           input_id = "rank_list_1"
         ),
         add_rank_list(
@@ -105,16 +85,26 @@ ui <- fluidPage(
   
   fluidRow(
     column(
-      width = 12,
-      tags$b("Result"),
-      column(
-        width = 12,
-        verbatimTextOutput("results_2")
-      ),
+      width = 6,
+      tags$h3("Result"),
+      tags$div(style = "white-space: normal", htmlOutput("results_2"))
+    ),
+    column(
+      width = 6,
+      tags$h3("My refrigerator contains:"),
+      tags$div(class = "fridge-container", uiOutput("fridgeItems"))
     )
   ),
+  
+  fluidRow(
+    column(
+      width = 12,
+      uiOutput("downloadSummary")
+    )
+  ),
+  
   tags$br(),
-  tags$br(),
+  tags$br()
   
 )
 
@@ -206,6 +196,14 @@ server <- function(input, output, session) {
       writeLines(unlist(item_text), file)
     }
   )
+  
+  output$fridgeItems <- renderUI({
+    fridge_items <- input$rank_list_2
+    items_html <- lapply(fridge_items, function(item) {
+      tags$div(ingredient_list[item])
+    })
+    tags$div(class = "fridge-container", items_html)
+  })
 }
 
 

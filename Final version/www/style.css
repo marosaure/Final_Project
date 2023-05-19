@@ -7,12 +7,19 @@ http://wrapbootstrap.com/preview/WB0JR603C
 
 body {
 	font-family: 'Raleway', sans-serif;
+              background: #80c47e;
 }
 
 code {
 	font-family: 'Source Code Pro', monospace;
 	font-size: 14px;
 }
+
+.navbar-default {
+  background-color: #00A064;
+    border-color: #ffffff;
+}
+
 
 .console {
 	font-family: 'Inconsolata', monospace;
@@ -25,6 +32,7 @@ code {
 	color: white;
 	z-index: 99999;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
 	color: #333;
@@ -45,14 +53,6 @@ h1 {
 
 h1.title{
 	color: #416983;
-}
-
-.carousel h1{
-	color: #ffffff;
-}
-
-.carousel p{
-	color: #ffffff;
 }
 
 .carousel h1:after, .carousel h1:before {
@@ -79,10 +79,6 @@ h1.title:after, h1.title:before {
     height: 2px;
     margin: 20px auto 20px;
     background: #4fbfa8;
-}
-
-h1 {
-	color: #333;
 }
 
 h3 {
@@ -123,6 +119,18 @@ p {
 code {
 	display: inline-block;
 	margin: 3px 3px 0 0;
+}
+
+
+.footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #c4c4c4;
+    padding-top: 15px;
+    color: #808080;
+    font-size: 11px;
+    text-align: center;
 }
 
 .table {
@@ -196,18 +204,6 @@ div#ss-connect-dialog a,
 div#ss-connect-dialog a:visited {
 	color: #03BCC0 !important;
 }
-
-.footer {
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    border-top: 1px solid #c4c4c4;
-    padding-top: 15px;
-    color: #808080;
-    font-size: 11px;
-    text-align: center;
-}
-
 
 /* shinyapps.io override end */
 

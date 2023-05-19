@@ -55,6 +55,10 @@ ui <- fluidPage(
                  tags$li(
                    "data-target" = "#myCarousel",
                    "data-slide-to" = "2"
+                 ),
+                 tags$li(
+                   "data-target" = "#myCarousel",
+                   "data-slide-to" = "3"
                  )
                ),
                tags$div(
@@ -84,15 +88,15 @@ ui <- fluidPage(
                  ),
                  tags$div(
                    class = "item",
-                   tags$img(src = "fruits_m.png", alt = "2", height = "1024px", width = "100%"),
+                   tags$img(src = "recipe.jpg", alt = "2", height = "1024px", width = "100%"),
                    tags$div(
                      class = "container",
                      tags$div(
                        class = "carousel-caption",
-                       tags$h1(class = "fit-head", "You want to live more sustainaly?"),
+                       tags$h1(class = "fit-head", "No idea what to eat for dinner?"),
                        tags$p(
                          class = "fit-text",
-                         "Learn how long your food actually lasts, and how to reduce food waste."
+                         "Check out our proposed recipes that are both tasty and help you use up the leftover food in your fridge"
                        ),
                        tags$a(
                          class = "btn btn-lg btn-primary",
@@ -105,7 +109,7 @@ ui <- fluidPage(
                  ),
                  tags$div(
                    class = "item",
-                   tags$img(src = "legume_p.png", alt = "3", height = "2000px", width = "100%"),
+                   tags$img(src = "calories.jpg", alt = "3", height = "1024px", width = "100%"),
                    tags$div(
                      class = "container",
                      tags$div(
@@ -118,7 +122,30 @@ ui <- fluidPage(
                        tags$p(
                          tags$a(
                            class = "btn btn-lg btn-primary",
-                           onclick = "$('li:eq(1) a').tab('show');",
+                           onclick = "$('li:eq(3) a').tab('show');",
+                           role = "button",
+                           "Get started now »"
+                         )
+                       )
+                     )
+                   )
+                 ),
+                 tags$div(
+                   class = "item",
+                   tags$img(src = "shops.jpg", alt = "4", height = "1024px", width = "100%"),
+                   tags$div(
+                     class = "container",
+                     tags$div(
+                       class = "carousel-caption",
+                       tags$h1(class = "fit-head", "You want to live more sustainaly?"),
+                       tags$p(
+                         class = "fit-text",
+                         "Learn how long your food actually lasts, and how to reduce food waste."
+                       ),
+                       tags$p(
+                         tags$a(
+                           class = "btn btn-lg btn-primary",
+                           onclick = "$('li:eq(4) a').tab('show');",
                            role = "button",
                            "Get started now »"
                          )
@@ -126,6 +153,7 @@ ui <- fluidPage(
                      )
                    )
                  )
+                 
                ),
                tags$a(
                  class = "left carousel-control",
@@ -145,94 +173,112 @@ ui <- fluidPage(
              fluidRow(
                style = "height:50px;",
                column(6),
-               column(12,
-                      shiny::HTML("<br><br><center> <h1>Description of the project</h1> </center><br>"),
-                      shiny::HTML("<h5>An interactive tool to help you explore the actual paths employees 
-                                                   have taken during their County careers. With information about the 
-                                                   popularity of certain paths, salary differences, and more, you can 
-                                                   build your own path based on what is meaningful to you.</h5>")
+               column(
+                 12,
+                 tags$h1(
+                   style = "text-align: center;",
+                   "Description of the project"
+                 ),
+                 tags$h5(
+                   style = "text-align: center;",
+                   "An interactive tool to help you explore the actual paths employees have taken during their County careers. With information about the popularity of certain paths, salary differences, and more, you can build your own path based on what is meaningful to you."
+                 )
                ),
-               column(3)
+               column(6)
              ),
              
-             HTML("<br>"),
+             HTML("<br><br>"),
              
              #Embed video and spotify
              fluidRow(
+               style = "height:50px;",
                column(6),
-               embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
-                 use_align("center") %>%
-                 use_rounded(radius = 10),
-               
-               #Video Carousel
-               tags$head(
-                 tags$style(HTML('#myCarouselv {width: 500px; height: 300px; margin: 0 auto;}'))
-               ),
-               
-               
-               
-               tags$div(
-                 id = "myCarouselv",
-                 class = "carousel slide",
-                 "data-ride" = "carousel",
-                 tags$ol(
-                   class = "carousel-indicators",
-                   tags$li(
-                     class = "active",
-                     "data-target" = "#myCarouselv",
-                     "data-slide-to" = "0"
-                   ),
-                   tags$li(
-                     "data-target" = "#myCarouselv",
-                     "data-slide-to" = "1"
-                   ),
-                   tags$li(
-                     "data-target" = "#myCarouselv",
-                     "data-slide-to" = "2"
-                   )
-                 ),
-                 tags$div(
-                   class = "carousel-inner",
-                   tags$div(
-                     class = "item active",
-                     embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
-                       use_align("center") %>%
-                       use_rounded(radius = 10),
-                     
-                   ),
-                   tags$div(
-                     class = "item",
-                     embed_url("https://youtu.be/2WecH55oT88") %>%
-                       use_align("center") %>%
-                       use_rounded(radius = 10),
-                     
-                   ),
-                   tags$div(
-                     class = "item",
-                     embed_url("https://youtu.be/LhbyjTybuXs") %>%
-                       use_align("center") %>%
-                       use_rounded(radius = 10),
-                     
-                   )
-                 ),
-                 tags$a(
-                   class = "left carousel-control",
-                   href = "#myCarouselv",
-                   "data-slide" = "prev",
-                   tags$span(class = "glyphicon glyphicon-chevron-left")
-                 ),
-                 tags$a(
-                   class = "right carousel-control",
-                   href = "#myCarouselv",
-                   "data-slide" = "next",
-                   tags$span(class = "glyphicon glyphicon-chevron-right")
+               column(
+                 12,
+                 tags$h1(
+                   style = "text-align: center;",
+                   "Useful Video"
                  )
                ),
-               
+               column(12,
+                      # Video Carousel
+                      tags$head(
+                        tags$style(HTML('#myCarouselv {width: 500px; height: 300px; margin: 0 auto;}'))
+                      ),
+                      tags$div(
+                        id = "myCarouselv",
+                        class = "carousel slide",
+                        "data-ride" = "carousel",
+                        style = "position: relative;",
+                        tags$ol(
+                          class = "carousel-indicators",
+                          tags$li(
+                            class = "active",
+                            "data-target" = "#myCarouselv",
+                            "data-slide-to" = "0"
+                          ),
+                          tags$li(
+                            "data-target" = "#myCarouselv",
+                            "data-slide-to" = "1"
+                          ),
+                          tags$li(
+                            "data-target" = "#myCarouselv",
+                            "data-slide-to" = "2"
+                          )
+                        ),
+                        tags$div(
+                          class = "carousel-inner",
+                          style = "position: absolute; top: 0; left: 0; right: 0; bottom: 0;",
+                          tags$div(
+                            class = "item active",
+                            style = "text-align: center;",
+                            embed_url("https://youtu.be/0Ix8hIqB_8k") %>%
+                              use_align("center") %>%
+                              use_rounded(radius = 10)
+                          ),
+                          tags$div(
+                            class = "item",
+                            style = "text-align: center;",
+                            embed_url("https://youtu.be/2WecH55oT88") %>%
+                              use_align("center") %>%
+                              use_rounded(radius = 10)
+                          ),
+                          tags$div(
+                            class = "item",
+                            style = "text-align: center;",
+                            embed_url("https://youtu.be/LhbyjTybuXs") %>%
+                              use_align("center") %>%
+                              use_rounded(radius = 10)
+                          )
+                        ),
+                        tags$a(
+                          class = "left carousel-control",
+                          href = "#myCarouselv",
+                          "data-slide" = "prev",
+                          tags$span(class = "glyphicon glyphicon-chevron-left")
+                        ),
+                        tags$a(
+                          class = "right carousel-control",
+                          href = "#myCarouselv",
+                          "data-slide" = "next",
+                          tags$span(class = "glyphicon glyphicon-chevron-right")
+                        )
+                      )
+               ),
+               column(6)
              ),
+             
+             HTML("<br><br>"),
              
              fluidRow(
                column(6),
+               column(
+                 12,
+                 tags$h1(
+                   style = "text-align: center;",
+                   "Background Music"
+                 )
+               ),
                tags$iframe(
                  style="border-radius:12px", 
                  src="https://open.spotify.com/embed/playlist/7yWS4mNsIXUYtm71xDIWe8", 
@@ -253,9 +299,7 @@ ui <- fluidPage(
                  width = 3,
                  
                  checkboxGroupInput("checkgroup", label = h4("Choose your ingredients up to 2"), 
-                                    choices = ingredients),
-                 
-                 actionButton("refresh", "Refresh")
+                                    choices = ingredients)
                  
                ),
                mainPanel(
@@ -319,10 +363,20 @@ ui <- fluidPage(
                  tags$h2("Result"),
                  textOutput("needs"),
                  plotlyOutput("needsPlot"), # change to plotlyOutput
-                 tags$h3("Information"),
-                 tags$p("Caloric needs are calculated based on your weight, height, age, sex, and physical activity level. They represent the estimated number of calories you need each day to maintain your current weight.")
+                 HTML("<br><br>")
+                 
                )
-             )
+             ),
+             
+             fluidRow(
+               column(6),
+               column(12,
+                      tags$h3("Information"),
+                      tags$p("Caloric needs are calculated based on your weight, height, age, sex, and physical activity level. They represent the estimated number of calories you need each day to maintain your current weight."),
+                      HTML("<br><br>")),
+               column(6)
+             ),
+
              
              ),
     

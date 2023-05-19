@@ -19,6 +19,16 @@ ui <- fluidPage(
   ),
   fluidRow(
     column(
+      width = 12,
+      div(id = "explanations",
+          tags$h2("Explanations"),
+          tags$p("According to a study conducted in 2020 by", tags$a("Eurostat", href = "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Food_waste_and_food_waste_prevention_-_estimates#Amounts_of_food_waste_at_EU_level"), ", the average european household wasted around 70 kilos of perfectly fine food in the year 2020."),
+          tags$p("Please note that these are general guidelines and it's always important to use your judgment and consider food safety when consuming refrigerated items.")
+      )
+    )
+  ),
+  fluidRow(
+    column(
       tags$h2("MyFridge"),
       width = 12,
       bucket_list(
@@ -115,6 +125,7 @@ server <- function(input, output, session) {
     item_text <- lapply(selected_items, function(item) {
       switch(
         item,
+        "apple" = "Apples usually keep in the fridge 4 to 6 weeks. Once cut, they last for up to 5 days. Calories: 52 per 100g. Protein: 0.3 per 100g. Carbs: 13.8 per 100g. Fiber: 2.4 per 100g.",
         "banana" = "Bananas are best stored at room temperature and can last for up to a week. They have about 96 calories per 100g. Carbs: 22 per 100g. Protein: 1.1 per 100g. Fiber: 2.6 per 100g.",
         "pineapple" = "A whole pineapple stored in the fridge can last up to 1 week, cut pieces can last for 3 to 4 days. It has about 50 calories per 100g. Carbs: 13.1 per 100g. Protein: 0.5 per 100g. Fiber: 1.4 per 100g.",
         "raspberry" = "Raspberries can be refrigerated for 2 to 3 days. They have about 52 calories per 100g. Carbs: 11.9 per 100g. Protein: 1.2 per 100g. Fiber: 6.5 per 100g.",
@@ -159,6 +170,7 @@ server <- function(input, output, session) {
       item_text <- lapply(selected_items, function(item) {
         switch(
           item,
+          "apple" = "Apples usually keep in the fridge 4 to 6 weeks. Once cut, they last for up to 5 days. Calories: 52 per 100g. Protein: 0.3 per 100g. Carbs: 13.8 per 100g. Fiber: 2.4 per 100g.",
           "banana" = "Bananas are best stored at room temperature and can last for up to a week. They have about 96 calories per 100g. Carbs: 22 per 100g. Protein: 1.1 per 100g. Fiber: 2.6 per 100g.",
           "pineapple" = "A whole pineapple stored in the fridge can last up to 1 week, cut pieces can last for 3 to 4 days. It has about 50 calories per 100g. Carbs: 13.1 per 100g. Protein: 0.5 per 100g. Fiber: 1.4 per 100g.",
           "raspberry" = "Raspberries can be refrigerated for 2 to 3 days. They have about 52 calories per 100g. Carbs: 11.9 per 100g. Protein: 1.2 per 100g. Fiber: 6.5 per 100g.",

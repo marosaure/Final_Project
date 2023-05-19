@@ -2,6 +2,7 @@ library(shiny)
 library(sortable)
 library(DiagrammeR)
 library(htmltools)
+library(htmlwidgets)
 
 ui <- fluidPage(
   
@@ -74,6 +75,7 @@ ui <- fluidPage(
     )
   ),
   fluidRow(
+    downloadButton("downloadData", "Download"),
     column(
       width = 12,
       tags$b("Result"),
@@ -87,7 +89,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   output$results_2 <- renderPrint(input$rank_list_2) # This matches the input_id of the second rank list
-
+  
   observeEvent(input$rank_list_2, {
     selected_items <- input$rank_list_2
     item_text <- lapply(selected_items, function(item) {
@@ -117,11 +119,22 @@ server <- function(input, output, session) {
         "onion" = "Onions can be stored in a cool, dry place for up to 2 months. They contain about 40 calories per 100g and are a good source of dietary fiber.",
         "garlic" = "Garlic can be stored in a cool, dry place for up to 2 months. It contains about 149 calories per 100g and is a good source of vitamin C and vitamin B6.",
         "peppers" = "Peppers can be stored in the fridge for up to 1 week. They contain about 20 calories per 100g and are high in vitamin C.",
-        
         "default" = "Unknown item dropped."
       )
     })
     output$results_2 <- renderText(paste(unlist(item_text), collapse = '\n')) # Collapsing the list into a single character string
+    
+    # Save the results as an HTML widget
+    widget <- renderUI({
+      HTML(paste(unlist(item_text), collapse = "<br>"))
+    })
+    
+    # Save the widget as an HTML file
+    observeEvent(input$downloadData, {
+      html_file <- paste0(tmpdir, "/results.html")
+      saveWidget(widget(), html_file, selfcontained = TRUE)
+      shiny::downloadButton("downloadData", "Download", href = html_file)
+    })
   })
 }
 

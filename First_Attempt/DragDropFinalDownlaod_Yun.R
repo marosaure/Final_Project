@@ -106,24 +106,17 @@ ui <- fluidPage(
   
   fluidRow(
     column(
-      width = 12,
+      width = 6,
       tags$h3("Result"),
-      column(
-        width = 12,
-        verbatimTextOutput("results_2")
-      ),
-    )
-  ),
-  tags$br(),
-  tags$br(),
-  
-  fluidRow(
+      verbatimTextOutput("results_2")
+    ),
     column(
-      width = 12,
+      width = 6,
       tags$h3("My refrigerator contains:"),
-      column(12, tags$div(class = "fridge-container", uiOutput("fridgeItems")))
+      tags$div(class = "fridge-container", uiOutput("fridgeItems"))
     )
   ),
+  tags$br(),
   fluidRow(
     column(
       width = 12,

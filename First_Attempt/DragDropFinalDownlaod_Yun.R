@@ -108,7 +108,7 @@ ui <- fluidPage(
     column(
       width = 6,
       tags$h3("Result"),
-      verbatimTextOutput("results_2")
+      tags$div(style = "white-space: normal", htmlOutput("results_2"))
     ),
     column(
       width = 6,
@@ -127,14 +127,16 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  output$results_2 <- renderPrint(input$rank_list_2) # This matches the input_id of the second rank list
+  output$results_2 <- renderText({
+    paste(input$rank_list_2, collapse = '\n')
+  })
   
   observeEvent(input$rank_list_2, {
     selected_items <- input$rank_list_2
     item_text <- lapply(selected_items, function(item) {
       switch(
         item,
-        "apple" = "Apples usually keep in the fridge 4 to 6 weeks. Once cut, they last for up to 5 days.",
+        "apple" = "Apples usually keep in the fridge 4 to 6 weeks. They contai Once cut, they last for up to 5 days.",
         "banana" = "Bananas are best stored at room temperature and can last for up to a week. They have about 96 calories per 100g. Carbs: 22 per 100g. Protein: 1.1 per 100g. Fiber: 2.6 per 100g.",
         "pineapple" = "A whole pineapple stored in the fridge can last up to 1 week, cut pieces can last for 3 to 4 days. It has about 50 calories per 100g. Carbs: 13.1 per 100g. Protein: 0.5 per 100g. Fiber: 1.4 per 100g.",
         "raspberry" = "Raspberries can be refrigerated for 2 to 3 days. They have about 52 calories per 100g. Carbs: 11.9 per 100g. Protein: 1.2 per 100g. Fiber: 6.5 per 100g.",

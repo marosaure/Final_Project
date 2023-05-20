@@ -750,16 +750,16 @@ server <- function(input, output) {
     data <- data.frame(Age = age_range, Needs = needs_range)
     
     p <- ggplot(data, aes(x = Age, y = Needs)) +
-      geom_line(color = "white", size = 1.5) +
+      geom_line(color = "#b4d3ba", size = 1.5) +
       geom_point(aes(x = input$age, y = needs_range[which(age_range == input$age)]), color = "#3F2204", size = 4) +
       geom_vline(xintercept = input$age, color = "#3F2204", linetype = "dashed") +
       labs(title = "Caloric needs as a function of age",
            x = "Age", y = "Caloric needs") +
       theme_minimal() +
-      theme(plot.background = element_rect(fill = '#9AD06E'),
+      theme(plot.background = element_rect(fill = '#fdfefd'),
             panel.grid.major = element_line(color = "#666666"),
             panel.grid.minor = element_line(color = "#666666"),
-            panel.background = element_rect(fill = '#9AD06E'),
+            panel.background = element_rect(fill = '#fdfefd'),
             axis.text = element_text(color = "black"),
             axis.title = element_text(color = "black"),
             plot.title = element_text(color = "black"))

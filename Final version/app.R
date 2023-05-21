@@ -120,10 +120,10 @@ ui <- fluidPage(
                      class = "container",
                      tags$div(
                        class = "carousel-caption",
-                       tags$h1(class = "fit-head", "No idea what to eat for dinner?"),
+                       tags$h1(class = "fit-head", "Want to know what you need?"),
                        tags$h4(
                          class = "fit-text",
-                         "Check out our proposed recipes that are both tasty and help you use up the leftover food in your fridge"
+                         "Curious about what your body needs? Then check out our caloric need calculator!"
                        ),
                        tags$p(
                          tags$a(
@@ -317,7 +317,7 @@ column(
                tags$style(HTML(".bucket-list-container {min-height: 450px;}
                     h2 {font-size: 30px;}
                     #results_2 {
-                      background-color: #7DF9FF;
+                      background-color: #e6f2ed;
                       color: #333;
                       font-size: 16px;
                       padding: 20px;
@@ -325,14 +325,19 @@ column(
                       font-family: Arial, sans-serif;}
                       
                     #fridgeItems {
-                      background-color: E0ffff;
+                      background-color: #e6f2ed;
 
                       color: #333;
                       font-size: 16px;
                       padding: 20px;
                       border-radius: 10px;
                       border: 10px;
-                      font-family: Arial, sans-serif;}"))
+                      font-family: Arial, sans-serif;}
+                      
+                    #downloadData {
+                      background-color: #e6f2ed;
+                      border-color: #e6f2ed;
+                    }"))
              ),
              fluidRow(
                column(
@@ -375,6 +380,8 @@ column(
           }
         ")
                  ),
+                 
+                 
                  downloadButton("downloadData", "Download")
                )
              ),

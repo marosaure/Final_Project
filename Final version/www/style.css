@@ -8,7 +8,7 @@ http://wrapbootstrap.com/preview/WB0JR603C
 body {
 	font-family: 'Raleway', sans-serif;
     
-    background-image: linear-gradient(50deg, #add7c2, #fff);
+              background-image: linear-gradient(50deg, #add7c2, #fff);
     
 }
 
@@ -17,11 +17,6 @@ code {
 	font-size: 14px;
 }
 
-.fit-head {
-    color: #fff;
-    background-color: rgba(3, 3, 3, 0.5);
-    padding-top: 10px;
-}
 
 .fit-head {
     color: #fff;
@@ -37,7 +32,8 @@ code {
   }
 
 .btn {
-  background-color: #97DFC6;
+  background-color: #add7c2;
+  border-color: #add7c2;
 }
 
 .navbar-default {
@@ -104,6 +100,18 @@ h1.title{
     background-color: rgba(0,0,0,0);
 }
 
+.carousel p{
+    color: #ffffff;
+}
+
+.carousel h4 {
+    color: #000;
+    background-color: #ffffff;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+
 .carousel h1:after, .carousel h1:before {
     content: " ";
     display: none;
@@ -160,12 +168,7 @@ h3 {
 .neg {
 	color: #c52828;
 }
-h4 {
-    color: #000;
-    background-color: #F0FFF0;
-    opacity: 0.8;
-    border-radius: 10px;
-}
+
 
 a{
     color: #000;

@@ -34,7 +34,7 @@ ui <- fluidPage(
   
   #navigation bar
   navbarPage(
-    title = img(src = "fridge_logo.png", height = 50, style="position: relative;left:0px;bottom:12px"),
+    title = img(src = "fridge_logo.png", height = 50, style="position: relative;left:0px;bottom:14px"),
     id = "main_navbar",
     footer = includeHTML("www/footer.html"),
     theme = "style.css",

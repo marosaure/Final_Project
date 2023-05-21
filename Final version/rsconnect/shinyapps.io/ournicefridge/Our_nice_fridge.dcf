@@ -1,0 +1,13 @@
+name: Our_nice_fridge
+title: Our_nice_fridge
+username:
+account: ournicefridge
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9155363
+bundleId: 7244928
+url: https://ournicefridge.shinyapps.io/Our_nice_fridge/
+when: 1684690908.6796
+lastSyncTime: 1684690908.67966
+asMultiple: FALSE
+asStatic: FALSE

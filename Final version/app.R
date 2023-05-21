@@ -34,10 +34,11 @@ ui <- fluidPage(
   
   #navigation bar
   navbarPage(
-    title = img(src = "fridge_logo.png", height = 30),
+    title = img(src = "fridge_logo.png", height = 50, style="position: relative;left:0px;bottom:12px"),
     id = "main_navbar",
     footer = includeHTML("www/footer.html"),
     theme = "style.css",
+    
     
     #Tabs
     tabPanel("Home", value = "home",
@@ -76,7 +77,7 @@ ui <- fluidPage(
                      tags$div(
                        class = "carousel-caption",
                        tags$h1(class = "fit-head", "Welcome to My Fridge!"),
-                       tags$p(
+                       tags$h4(
                          class = "fit-text",
                          "Don't want to be stressed while shopping? Then take a tour in our App!"
                        ),
@@ -99,7 +100,7 @@ ui <- fluidPage(
                      tags$div(
                        class = "carousel-caption",
                        tags$h1(class = "fit-head", "No idea what to eat for dinner?"),
-                       tags$p(
+                       tags$h4(
                          class = "fit-text",
                          "Check out our proposed recipes that are both tasty and help you use up the leftover food in your fridge"
                        ),
@@ -120,7 +121,7 @@ ui <- fluidPage(
                      tags$div(
                        class = "carousel-caption",
                        tags$h1(class = "fit-head", "No idea what to eat for dinner?"),
-                       tags$p(
+                       tags$h4(
                          class = "fit-text",
                          "Check out our proposed recipes that are both tasty and help you use up the leftover food in your fridge"
                        ),
@@ -143,7 +144,7 @@ ui <- fluidPage(
                      tags$div(
                        class = "carousel-caption",
                        tags$h1(class = "fit-head", "You want to live more sustainaly?"),
-                       tags$p(
+                       tags$h4(
                          class = "fit-text",
                          "Learn how long your food actually lasts, and how to reduce food waste."
                        ),
@@ -184,8 +185,8 @@ ui <- fluidPage(
                    style = "text-align: center;",
                    "Description of the project"
                  ),
-                 tags$h5(
-                   style = "text-align: center;",
+                 tags$h3(
+                   style = "text-align: center; margin-left: 15%; margin-right: 15%; font-size: 14px; font-style: normal;",
                    "An interactive tool to help you explore the actual paths employees have taken during their County careers. With information about the popularity of certain paths, salary differences, and more, you can build your own path based on what is meaningful to you."
                  )
                ),
@@ -205,6 +206,13 @@ ui <- fluidPage(
                    "Useful Video"
                  )
                ),
+column(
+  12,
+  tags$p(
+    style = "text-align: center;",
+    "Looking for shopping advice? Check out the videos below!"
+  )
+),
                column(12,
                       # Video Carousel
                       tags$head(
@@ -284,6 +292,13 @@ ui <- fluidPage(
                    "Background Music"
                  )
                ),
+column(
+  12,
+  tags$p(
+    style = "text-align: center;",
+    "Small playlist to motivate you on our shopping journey"
+  )
+),
                tags$iframe(
                  style="border-radius:12px", 
                  src="https://open.spotify.com/embed/playlist/7yWS4mNsIXUYtm71xDIWe8", 
@@ -302,7 +317,7 @@ ui <- fluidPage(
                tags$style(HTML(".bucket-list-container {min-height: 450px;}
                     h2 {font-size: 30px;}
                     #results_2 {
-                      background-color: #FFFF99;
+                      background-color: #7DF9FF;
                       color: #333;
                       font-size: 16px;
                       padding: 20px;
@@ -310,7 +325,8 @@ ui <- fluidPage(
                       font-family: Arial, sans-serif;}
                       
                     #fridgeItems {
-                      background-color: #FFFF99;
+                      background-color: E0ffff;
+
                       color: #333;
                       font-size: 16px;
                       padding: 20px;
@@ -378,7 +394,7 @@ ui <- fluidPage(
                column(
                  width = 6,
                  tags$h3("Result"),
-                 tags$div(style = "white-space: normal", htmlOutput("results_2"))
+                 tags$div(style = "white-space: normal;", htmlOutput("results_2"))
                ),
                column(
                  width = 6,
